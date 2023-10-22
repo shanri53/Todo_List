@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style> 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.app {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#todoInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+li:hover {
+    background: #e9e9e9;
+}
+
+
+</style>
+<body>
+    <div class="app">
+        <h1>Todo List</h1>
+        <input type="text" id="todoInput" placeholder="Add a new task...">
+        <button id="addTodo">Add</button>
+        <ul id="todoList"></ul>
+    </div>
+    <script src="script.js"></script>
+ <script> 
+    document.getElementById('addTodo').addEventListener('click', function() {
+    var value = document.getElementById('todoInput').value;
+    if (value) {
+        addItem(value);
+        document.getElementById('todoInput').value = "";
+    }
+});
+
+function addItem(text) {
+    var list = document.getElementById('todoList');
+
+    var item = document.createElement('li');
+    item.innerText = text;
+
+    // Clicking on an item will remove it
+    item.addEventListener('click', function() {
+        list.removeChild(item);
+    });
+
+    list.appendChild(item);
+}
+
+    
+    </script>
+</body>
+
+</html>
